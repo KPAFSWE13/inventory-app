@@ -46,6 +46,7 @@ router.post("/", [check("title", "not empty or white spaces").not().isEmpty().tr
     } catch(error) {
         next(error);
     }
+    
 })
 
 //Tier 3 Routes

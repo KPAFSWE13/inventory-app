@@ -9,7 +9,7 @@ export const ItemsList = ({items, itemHandler}) => {
 				return (
                 <>
                 <a id="item" onClick={() => itemHandler(idx)}>
-                    <Item item={item} key={idx} />
+                     <Item item={item} idx={idx} />
                 </a>
                 </>
                 )

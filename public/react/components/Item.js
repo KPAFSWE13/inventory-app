@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Item = ({item}) => {
+export const Item = ({item, idx}) => {
     return (
         <>
-            <h3>{item.title}</h3>
+            <h3 id="titles">{idx + 1} : {item.title}</h3>
             
         </>
     )
