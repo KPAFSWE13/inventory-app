@@ -11,7 +11,6 @@ const Item = sequelize.define("items", {
     type: Sequelize.STRING,
     allowNull: false 
   },
-
   price:{
     type:Sequelize.NUMBER,
     allowNull: false

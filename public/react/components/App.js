@@ -100,7 +100,20 @@ export const App = () => {
 	}
 
 	//Async function update an item
-
+	async function updateItem() {
+		let index = -1;
+		console.log(items);
+		for( const i of items) {
+			console.log(i.id);
+			console.log(singleItem.id);
+			if(i.id === singleItem.id) {
+				index = items.indexOf(i);
+				console.log("Checking index array:", index);
+			}
+			
+		}
+		const id = items[index].id;
+	}
 	useEffect(() => {
 		fetchItems();
 	}, []);
