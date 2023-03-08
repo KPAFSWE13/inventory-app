@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SingleViewItem = ({item, setSingleItem, deleteItem}) => {
+export const SingleViewItem = ({item, setWhichPage, deleteItem}) => {
     return (
         
             <body id="singlePageViewer">
@@ -19,9 +19,9 @@ export const SingleViewItem = ({item, setSingleItem, deleteItem}) => {
                 <br></br>
                 <br></br>
                 <footer id="bottom">
-                    <button onClick={() => setSingleItem('')}>Return Back</button>
-                    <button>Update Item</button>
-                    <button onClick={() => deleteItem()}>Delete Item</button>
+                    <button onClick={() => setWhichPage('Home')} id="reactBtn">Return Back</button>
+                    <button onClick={() => setWhichPage('UpdateItem')} id="reactBtn">Update Item</button>
+                    <button onClick={() => deleteItem()} id="reactBtn">Delete Item</button>
                     <br></br>
                     <br></br>
                     

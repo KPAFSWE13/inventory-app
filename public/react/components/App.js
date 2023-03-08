@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { SaucesList } from './SaucesList';
+
 import { ItemsList } from './ItemsList';
 import { SingleViewItem } from './SingleViewItem';
+import { AddItem } from './AddItem';
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+import { UpdateItem } from './UpdateItem';
 
 export const App = () => {
 
-	const [sauces, setSauces] = useState([]);
+
 	const [items, setItems] = useState([]);
 
 	const [singleItem, setSingleItem] = useState('');
 	
 	//Adding a new item
+	const [whichPage, setWhichPage] = useState('Home');
 	//Checking whether we add a form
 	const [isAddingItem, setIsAddingItem] = useState(false);
 
@@ -22,6 +25,7 @@ export const App = () => {
 	const [category, setCategory] = useState('');
 	const [pictureURL, setPictureURL] = useState('');
 
+	//Async function to get all the items
 	async function fetchItems(){
 		try {
 			const response = await fetch(`${apiURL}/items`);
@@ -33,12 +37,14 @@ export const App = () => {
 		}
 	}
 
+	//Async function get a single item
 	async function itemHandler(index) {
 		try {
 			const id = items[index].id;
 			const response = await fetch(`${apiURL}/items/${id}`);
 			const singularItem = await response.json();
 			setSingleItem(singularItem);
+			setWhichPage('ViewSingle');
 			console.log(singularItem);
 			console.log(singleItem);
 		} catch (err) {
@@ -46,6 +52,7 @@ export const App = () => {
 		}
 	}
 
+	//Async function to delete a single item
 	async function deleteItem() {
 		
 			let index = -1;
@@ -70,6 +77,8 @@ export const App = () => {
 		
 	}
 
+
+	//Async function to create a new item
 	async function createItem(){
 		const response = await fetch(`${apiURL}/items/`, {
 			method: "POST",
@@ -90,42 +99,90 @@ export const App = () => {
 		fetchItems();
 	}
 
+	//Async function update an item
+
 	useEffect(() => {
 		fetchItems();
 	}, []);
-	if(singleItem == '' && isAddingItem == false) {
-		return (
-			<main>	
-				<h1>Inventory App</h1>
-				<h2>Index</h2>
-				<ItemsList items={items} itemHandler={itemHandler} />
-				<button onClick={() => setIsAddingItem(true)}>Add an Item</button>
-			</main>
-		)
-	} else if (singleItem != '' && isAddingItem == false)  {
-		return <SingleViewItem item={singleItem} setSingleItem={setSingleItem} deleteItem={deleteItem}/>
-	} else if (isAddingItem == true) {
-		return (
-			<main>
-				<h1>Add an Item</h1>
-				<h3>Add a title</h3>
-				<input type="text" name="title" placeholder='Enter a title for the Item' onChange ={(e) => setTitle(e.target.value)}></input>
-				<h3>Add a Price</h3>
-				<input type="text" name="title" placeholder='Enter a price for the Item' onChange = {(e) => setPrice(e.target.value)}></input>
-				<h3>Add a Description</h3>
-				<input type="text" name="title" placeholder='Enter a description for the Item' onChange={(e) => setDescription(e.target.value)}></input>
-				<h3>Add a Category</h3>
-				<input type="text" name="title" placeholder='Enter a category for the Item' onChange={(e) => setCategory(e.target.value)}></input>
-				<h3>Add a URL</h3>
-				<input type="text" name="title" placeholder='Enter a URL for the Item' onChange={(e) => setPictureURL(e.target.value)}></input>
 
-				<br></br>
-				<br></br>
-				<button onClick={() => createItem()}>Submit Data</button>
-				<button onClick={() => setIsAddingItem(false)}>Return Back</button>
-			</main>
-		)
+
+	//Selection to view which page specifically is selected
+	//This will change based upon the selected page
+	let reactView;
+
+	switch(whichPage) {
+		case 'Home': (
+			reactView = <ItemsList items={items} itemHandler={itemHandler} setWhichPage={setWhichPage} />
+		);	
+		break;
+		case 'ViewSingle': (
+			reactView = <SingleViewItem item={singleItem} setWhichPage={setWhichPage} deleteItem={deleteItem}/>
+		);
+		break;
+		case 'Add': (
+			reactView = <AddItem createItem={createItem} setTitle={setTitle} setPrice={setPrice} setDescription={setDescription} setCategory={setCategory} setPictureURL={setPictureURL} setWhichPage={setWhichPage} />
+		);
+		break;
+		case 'UpdateItem': (
+			reactView = <UpdateItem setWhichPage={setWhichPage} item={singleItem}/>
+		);
+		break;
+		default: 
+			reactView = null;
+			break;
 	}
+
+	return ( 
+		<>
+			<navbar>
+				
+			</navbar>
+
+			<main>
+				{reactView}
+			</main>
+	
+			<footer>
+
+			</footer>
+	
+		</>
+	)
+	// if(singleItem == '' && isAddingItem == false) {
+	// 	return (
+	// 		<main>	
+	// 			<h1>Inventory App</h1>
+	// 			<h2>Index</h2>
+	// 			<ItemsList items={items} itemHandler={itemHandler} />
+	// 			<button onClick={() => setIsAddingItem(true)}>Add an Item</button>
+	// 		</main>
+	// 	)
+	// } else if (singleItem != '' && isAddingItem == false)  {
+	// 	return <SingleViewItem item={singleItem} setSingleItem={setSingleItem} deleteItem={deleteItem}/>
+	// } else if (isAddingItem == true) {
+	// 	return (
+	// 		<main>
+	// 			<form onSubmit={ createItem }>
+	// 				<h1>Add an Item</h1>
+	// 				<h3>Add a title</h3>
+	// 				<input type="text" name="title" placeholder='Enter a title for the Item' onChange ={(e) => setTitle(e.target.value)}></input>
+	// 				<h3>Add a Price</h3>
+	// 				<input type="text" name="title" placeholder='Enter a price for the Item' onChange = {(e) => setPrice(e.target.value)}></input>
+	// 				<h3>Add a Description</h3>
+	// 				<input type="text" name="title" placeholder='Enter a description for the Item' onChange={(e) => setDescription(e.target.value)}></input>
+	// 				<h3>Add a Category</h3>
+	// 				<input type="text" name="title" placeholder='Enter a category for the Item' onChange={(e) => setCategory(e.target.value)}></input>
+	// 				<h3>Add a URL</h3>
+	// 				<input type="text" name="title" placeholder='Enter a URL for the Item' onChange={(e) => setPictureURL(e.target.value)}></input>
+
+	// 				<br></br>
+	// 				<br></br>
+	// 				<button type="submit">Submit Data</button>
+	// 				<button onClick={() => setIsAddingItem(false)}>Return Back</button>
+	// 			</form>
+	// 		</main>
+	// 	)
+	// }
 }
 
 {/* <h3>{singleItem.title}</h3>

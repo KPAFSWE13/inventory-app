@@ -11,13 +11,14 @@
 }
 
 #imageViewer {
-  width: 25rem;
-  height: 25rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 #bottom {
  background-color: rgb(0, 0, 0);
  color:bisque;
+ height: 10rem;
 }
 
 #titles{
