@@ -1,14 +1,44 @@
 import React from 'react';
 
-export const UpdateItem = ({setWhichPage, item}) => {
+export const UpdateItem = ({setWhichPage, item, updateItem, setTitle, setPrice, setDescription, setCategory, setPictureURL}) => {
     return (
-        <>
-            <h1>Update Item:</h1>
+        <>  
+            <div class="content2">
+                <h1>Update Item:</h1>
+            </div>
+            <br></br>
+            <div class="content">
             <h2>{item.title}</h2>
 
+            <br></br>
+            <br></br>
 
-            <button onClick={() => setWhichPage('ViewSingle')} id="reactBtn">Return Back</button>
-            <button onClick={() => setWhichPage('Home')} id="reactBtn">Return Home</button>
+            <div class="form-container">
+            <form onSubmit={ updateItem } id="formID" >
+                <h4>Update Title:</h4>
+                <input type="text" name="title" required onChange={(e) => {setTitle(e.target.value)}} placeholder="Enter new title"/>
+
+                <h4>Update Price:</h4>
+                <input type="number" name="price" required onChange={(e) => {setPrice(e.target.value)}} placeholder="Enter new price"/>
+
+                <h4>Update Description:</h4>
+                <input type="text" name="description" required onChange={(e) => {setDescription(e.target.value)}} placeholder="Enter new description"/>
+
+                <h4>Update Category:</h4>
+                <input type="text" name="category" required onChange={(e) => {setCategory(e.target.value)}} placeholder="Enter new category"/>
+
+                <h4>Update Picture:</h4>
+                <input type="text" name="Picture" required onChange={(e) => {setPictureURL(e.target.value)}} placeholder="Enter new picture"/>
+
+
+                <br></br>
+                <br></br>
+                <button  id="reactBtn" class="btnL">Update Item</button>
+                <button onClick={() => setWhichPage('ViewSingle')} id="reactBtn" class="btnR">Return Back</button>
+                {/* <button onClick={() => setWhichPage('Home')} id="reactBtn">Return Home</button> */}
+            </form>
+            </div>
+            </div>
         </>
     )
 }

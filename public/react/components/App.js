@@ -3,9 +3,20 @@ import React, { useState, useEffect } from 'react';
 import { ItemsList } from './ItemsList';
 import { SingleViewItem } from './SingleViewItem';
 import { AddItem } from './AddItem';
+import { UpdateItem } from './UpdateItem';
+import { SearchBar } from './SearchBar';
+import { ShoppingCart } from './ShoppingCart';
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
-import { UpdateItem } from './UpdateItem';
+import Companylogo from "./davies-logo.jpeg"
+
+// Bootstrap
+// import Button from 'react-bootstrap/Button';
+// import Container from 'react-bootstrap/Container';
+// import Form from 'react-bootstrap/Form';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export const App = () => {
 
@@ -24,6 +35,11 @@ export const App = () => {
 	const [description, setDescription] = useState('');
 	const [category, setCategory] = useState('');
 	const [pictureURL, setPictureURL] = useState('');
+
+	//Shopping Total Amount
+	const [totalCost, setTotalCost] = useState(0);
+	//List of shopping items
+	const [receiptItems, setReceiptItems] = useState([]);
 
 	//Async function to get all the items
 	async function fetchItems(){
@@ -50,6 +66,7 @@ export const App = () => {
 		} catch (err) {
 			console.log("Unfortunatly not, there's an error.")
 		}
+		fetchItems();
 	}
 
 	//Async function to delete a single item
@@ -73,6 +90,7 @@ export const App = () => {
 			});
 			//const data = await response.json();
 			fetchItems();
+			setWhichPage('Home');
 			setSingleItem('');
 		
 	}
@@ -98,6 +116,16 @@ export const App = () => {
 		const data = await response.json();
 		fetchItems();
 	}
+	async function addItem(){
+		try {
+			receiptItems.push(item);
+			
+			
+		} catch (err) {
+			console.log("Oh no an error! ", err)
+		}
+	}
+
 
 	//Async function update an item
 	async function updateItem() {
@@ -113,6 +141,25 @@ export const App = () => {
 			
 		}
 		const id = items[index].id;
+		const response = await fetch(`${apiURL}/items/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json' 
+			},
+			body: JSON.stringify(
+				{
+					title: title,
+					price: price,
+					description: description,
+					category: category,
+					image: pictureURL
+				}
+			)
+			
+		});
+		const data = await response.json();
+		fetchItems();
+		setWhichPage('Home');
 	}
 	useEffect(() => {
 		fetchItems();
@@ -129,7 +176,7 @@ export const App = () => {
 		);	
 		break;
 		case 'ViewSingle': (
-			reactView = <SingleViewItem item={singleItem} setWhichPage={setWhichPage} deleteItem={deleteItem}/>
+			reactView = <SingleViewItem item={singleItem} setWhichPage={setWhichPage} deleteItem={deleteItem} receiptItems={receiptItems} addItem={addItem}/>
 		);
 		break;
 		case 'Add': (
@@ -137,7 +184,15 @@ export const App = () => {
 		);
 		break;
 		case 'UpdateItem': (
-			reactView = <UpdateItem setWhichPage={setWhichPage} item={singleItem}/>
+			reactView = <UpdateItem setWhichPage={setWhichPage} item={singleItem} setTitle={setTitle} setPrice={setPrice} setDescription={setDescription} setCategory={setCategory} setPictureURL={setPictureURL} updateItem={updateItem}/>
+		);
+		break;
+		case 'Search': (
+			reactView = <SearchBar items={items} itemHandler={itemHandler} />
+		);
+		break;
+		case 'ShoppingCart': (
+			reactView = <ShoppingCart receiptItems={receiptItems} setReceiptItems={setReceiptItems}/>
 		);
 		break;
 		default: 
@@ -147,60 +202,71 @@ export const App = () => {
 
 	return ( 
 		<>
-			<navbar>
-				
-			</navbar>
+			 {/* {<Navbar bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link href="#action2">Link</Nav.Link>
+            <NavDropdown title="Link" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action5">
+                Something else here
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#" disabled>
+              Link
+            </Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>} * */}
+			
+			
+			
 
 			<main>
+			<div class="sidebar">
+				
+				<h2>Inventory App</h2>
+				<a  onClick={() => setWhichPage('Home')}>Home</a>
+				<a  onClick={() => setWhichPage('Add')}>Add An Item</a>
+				<a  onClick={() => setWhichPage('Search')}>Search</a>
+				<a  onClick={() => setWhichPage('ShoppingCart')}>Shopping Cart</a>
+				
+				
+			</div>
+			
 				{reactView}
+			
+				
 			</main>
 	
 			<footer>
-
+				
 			</footer>
-	
 		</>
 	)
-	// if(singleItem == '' && isAddingItem == false) {
-	// 	return (
-	// 		<main>	
-	// 			<h1>Inventory App</h1>
-	// 			<h2>Index</h2>
-	// 			<ItemsList items={items} itemHandler={itemHandler} />
-	// 			<button onClick={() => setIsAddingItem(true)}>Add an Item</button>
-	// 		</main>
-	// 	)
-	// } else if (singleItem != '' && isAddingItem == false)  {
-	// 	return <SingleViewItem item={singleItem} setSingleItem={setSingleItem} deleteItem={deleteItem}/>
-	// } else if (isAddingItem == true) {
-	// 	return (
-	// 		<main>
-	// 			<form onSubmit={ createItem }>
-	// 				<h1>Add an Item</h1>
-	// 				<h3>Add a title</h3>
-	// 				<input type="text" name="title" placeholder='Enter a title for the Item' onChange ={(e) => setTitle(e.target.value)}></input>
-	// 				<h3>Add a Price</h3>
-	// 				<input type="text" name="title" placeholder='Enter a price for the Item' onChange = {(e) => setPrice(e.target.value)}></input>
-	// 				<h3>Add a Description</h3>
-	// 				<input type="text" name="title" placeholder='Enter a description for the Item' onChange={(e) => setDescription(e.target.value)}></input>
-	// 				<h3>Add a Category</h3>
-	// 				<input type="text" name="title" placeholder='Enter a category for the Item' onChange={(e) => setCategory(e.target.value)}></input>
-	// 				<h3>Add a URL</h3>
-	// 				<input type="text" name="title" placeholder='Enter a URL for the Item' onChange={(e) => setPictureURL(e.target.value)}></input>
-
-	// 				<br></br>
-	// 				<br></br>
-	// 				<button type="submit">Submit Data</button>
-	// 				<button onClick={() => setIsAddingItem(false)}>Return Back</button>
-	// 			</form>
-	// 		</main>
-	// 	)
-	// }
 }
 
-{/* <h3>{singleItem.title}</h3>
-<h4>{singleItem.price}</h4>
-<p>{singleItem.description}</p>
-<p>{singleItem.category}</p>
-<img src={singleItem.image} alt={singleItem.title} /> 
-<button onClick={() => setSingleItem('')}>Return Back</button> */}
+
+				//<img src={Companylogo} alt="image" height="7.4%" width="100%"></img>

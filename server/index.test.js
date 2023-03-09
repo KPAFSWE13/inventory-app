@@ -1,5 +1,5 @@
 const {sequelize} = require('./db');
-const { Item } = require("./models");
+const { Item } = require("./models/index");
 const regeneratorRuntime = require("regenerator-runtime");
 
 describe('Item Model Tests', () => {

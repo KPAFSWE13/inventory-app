@@ -5,14 +5,20 @@ export const ItemsList = ({items, itemHandler, setWhichPage}) => {
     console.log(items);
 	return (
         <>
-        <h1>Inventory App</h1>
-		<h2>Index</h2>
+        <div class="content2">
+            <h1>Index Page</h1>
+        </div>
+        
+        <br></br>
+        <div class="content">
+        <h2>Home</h2>
+		<br></br>
+        
 		{
             
 			items.map((item, idx) => {
 				return (
                 <>
-                
                 <a id="item" onClick={() => itemHandler(idx)}>
                      <Item item={item} idx={idx} />
                 </a>
@@ -21,7 +27,8 @@ export const ItemsList = ({items, itemHandler, setWhichPage}) => {
                 )
 			})
 		}
-        <button onClick={() => setWhichPage('Add')} id="reactBtn">Add an Item</button>
+        {/* <button onClick={() => setWhichPage('Add')} id="reactBtn">Add an Item</button> */}
+        </div>
 	    </>
         )
 } 

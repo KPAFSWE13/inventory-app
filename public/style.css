@@ -3,26 +3,282 @@
   box-sizing: border-box;
   background-color: rgb(223, 223, 223);
 }
+h1 {
+  text-align: center;
+  left: 75%;
+  width: 100%;
+  padding: 25px;
+  background-color: #10444c;
+  color: #fff;
+}
+
+h1 #g {
+  display: inline;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
+
+h2{
+  text-align: center;
+  padding-top: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #000;
+}
+
+#left-table {
+  width: 10%;
+  text-align: center;
+  border: 1px solid #000;
+  background-color: #10444c;
+  color: #fff;
+}
+
+#right-table {
+  text-align: left;
+  padding: 10px;
+}
+
+#price-table {
+  width: 10%;
+  text-align: center;
+  background-color: green;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #cacaca;
+}
+
+form{
+  text-align: center;
+  padding: 10%;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+
+#formID, input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#formID, input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+#formID, input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#formID, input[type=number]:focus {
+  border: 3px solid #555;
+}
 
 #singlePageViewer {
-  background-color: black;
-  color: white;
+  color: #000;
   text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+#flex-container-item-info {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 33.333333%;
+}
+
+#singlePageViewer2 {
+  color: rgb(0, 0, 0);
+  text-align: left;
+  padding: 2px;
 }
 
 #imageViewer {
   width: 20rem;
   height: 20rem;
+  border-radius: 5%;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+
+#zoom {
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#zoom img {
+  transition: transform .5s ease;
+}
+
+#zoom:hover img {
+  transform: scale(1.2);
 }
 
 #bottom {
- background-color: rgb(0, 0, 0);
- color:bisque;
- height: 10rem;
+  color:bisque;
 }
 
-#titles{
+#reactBtn{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  justify-content: center;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+#deletebtn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+#reactBtnF {
+  background-color: #10444c;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 5px;
+}
+#btnSort {
+  text-align:center;
+}
+
+
+#btnSort div {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#titles {
   text-align: left;
   padding-left: 5%;
+  color: #000;
+}
 
-  color: brown;}
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #10444c;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: #fff;
+  background-color: #184c5c;
+  padding: 16px;
+  text-decoration: none;
+  border-style: solid;
+}
+
+.sidebar h2 {
+  color: #fff;
+  background-color: #10444c;
+  border-style: solid;
+  
+  padding: 13px;
+}
+.sidebar h3 {
+  color: #10444c;
+  background-color: #d88181;
+  border-style: solid;
+  text-align: center;
+}
+.sidebar h4 {
+  color: #10444c;
+  background-color: #d88181;
+  border-style: solid;
+  text-align: center;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #127685;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  height: 1000px;
+  padding-left: 8%;
+  padding-right: 8%;
+  
+}
+
+div.content2 {
+  margin-left: 200px;
+}
+
+#searchBar {
+  width: 100%;
+  padding: 1%;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
