@@ -1,10 +1,7 @@
 const {Sequelize} = require('sequelize')
 const {sequelize} = require('../db')
 
-// const Sauce = sequelize.define("sauces", {
-//   name: Sequelize.STRING,
-//   image: Sequelize.STRING,
-// });
+
 
 const Item = sequelize.define("items", {
   title:{ 
@@ -32,8 +29,21 @@ const Item = sequelize.define("items", {
   }
 
 });
+
+const User = sequelize.define("users", {
+  username:{ 
+    type: Sequelize.STRING,
+    allowNull: false 
+  },
+  password:{
+    type:Sequelize.NUMBER,
+    allowNull: false
+  }
+
+});
+
 module.exports = {
   db: sequelize,
-  // Sauce,
-  Item
+  Item,
+  User
 };

@@ -11,7 +11,7 @@ export const ItemsList = ({items, itemHandler, setWhichPage}) => {
         
         <br></br>
         <div class="content">
-        <h2>Home</h2>
+        <h2>Catalogue</h2>
 		<br></br>
         
 		{
@@ -29,6 +29,10 @@ export const ItemsList = ({items, itemHandler, setWhichPage}) => {
 		}
         {/* <button onClick={() => setWhichPage('Add')} id="reactBtn">Add an Item</button> */}
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
 	    </>
         )
 } 

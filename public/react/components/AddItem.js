@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const AddItem = ({createItem, setTitle, setPrice, setDescription, setCategory, setPictureURL, setWhichPage}) => {
+    
     return (
                     <>
                     <div class="content2">
@@ -12,7 +13,7 @@ export const AddItem = ({createItem, setTitle, setPrice, setDescription, setCate
                     <br></br>
                     <br></br>
 					<div class="form-container">
-                    <form onSubmit={ createItem } id="formID">
+                    <form onSubmit={ createItem } id="formID" autocomplete="off">
                         <h3>Add a Title</h3>
                         <input type="text" name="title" required placeholder='Enter a title for the Item' onChange ={(e) => setTitle(e.target.value)}/>
                         <h3>Add a Price</h3>

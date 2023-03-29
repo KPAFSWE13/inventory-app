@@ -1,8 +1,7 @@
 module.exports = {
-  sauces: [
-    {"name" : "Sriracha", "image" : "https://64.media.tumblr.com/12cd128183713bf928bda87a24f22487/tumblr_ne6jee85PM1tha1vgo1_250.gif"},
-    {"name" : "Franks", "image": "https://cdn.streamelements.com/uploads/1887a0da-3642-4795-b5f5-774d5b377e52.gif"},
-    {"name" : "Tobasco", "image": "https://64.media.tumblr.com/1564fcf74adc3fe6542c34b6a1f05de1/tumblr_na9lew0bNS1tha1vgo1_r1_250.gif"}
+
+  users: [
+   {"username" : "Kevin123", "password" : "12A345"}
   ],
   items: [
     {
@@ -14,7 +13,7 @@ module.exports = {
     },
     {
        "title":"Mens Casual Premium Slim Fit T-Shirts ",
-       "price":22.3,
+       "price":22.35,
        "description":"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
        "category":"men's clothing",
        "image":"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
@@ -97,12 +96,33 @@ module.exports = {
        "image":"https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
     },
     {
-       "title":"Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
+       "title":"Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED",
        "price":999.99,
        "description":"49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
        "category":"electronics",
        "image":"https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
     },
+    {
+      "title":"Sony PS5 Disc Console + God of War Ragnarok",
+      "price":499.99,
+      "description":"PlayStation 5 console DualSense™ wireless controller Base  HDMI® cable  AC power cord   USB cable   Printed materials   ASTRO’s PLAYROOM (Pre-installed game. PS5™ console may need to be updated to the latest system software version. Internet connection required.)   God of War™ Ragnarök full game voucher",
+      "category":"electronics",
+      "image":"https://shop.bt.com/images/product/uni2/DigitalContent/600x450/h2/H218_FC3749F8-6403-4AFF-A833-ECCA8B0C6657_large.jpg"
+   },
+   {
+      "title":"Xbox Series X 1TB Console",
+      "price":449.99,
+      "description":"Power your dreams. Introducing Xbox Series X-our fastest, most powerful console ever, designed for a console generation that has you, the player, at its centre.",
+      "category":"electronics",
+      "image":"https://media.4rgos.it/i/Argos/8448262_R_Z001A?w=1500&h=880&qlt=70&fmt=webp"
+   },
+   {
+      "title":"Nintendo Switch OLED Model Console - Pokémon Edition",
+      "price":319.99,
+      "description":"The Nintendo Switch OLED Model Pokemon Scarlet and Violet Edition console features art inspired by the upcoming Pokemon Scarlet and Pokemon Violet games (sold separately). The Legendary Pokemon Koraidon and Miraidon are featured on the glossy front side of the white system's dock, and a design inspired by the series' iconic Poke Ball is featured on the back.",
+      "category":"electronics",
+      "image":"https://media.4rgos.it/i/Argos/1270004_R_Z001A?w=1500&h=880&qlt=70&fmt=webp"
+   },
     {
        "title":"BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
        "price":56.99,

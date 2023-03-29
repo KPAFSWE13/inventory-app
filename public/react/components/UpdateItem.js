@@ -14,21 +14,21 @@ export const UpdateItem = ({setWhichPage, item, updateItem, setTitle, setPrice, 
             <br></br>
 
             <div class="form-container">
-            <form onSubmit={ updateItem } id="formID" >
+            <form onSubmit={ updateItem } id="formID" autocomplete="off">
                 <h4>Update Title:</h4>
-                <input type="text" name="title" required onChange={(e) => {setTitle(e.target.value)}} placeholder="Enter new title"/>
+                <input type="text" name="title" required onChange={(e) => {setTitle(e.target.value)}} placeholder = { item.title }/>
 
                 <h4>Update Price:</h4>
-                <input type="number" name="price" required onChange={(e) => {setPrice(e.target.value)}} placeholder="Enter new price"/>
+                <input type="number" name="price" required onChange={(e) => {setPrice(e.target.value)}} placeholder = { item.price }/>
 
                 <h4>Update Description:</h4>
-                <input type="text" name="description" required onChange={(e) => {setDescription(e.target.value)}} placeholder="Enter new description"/>
+                <input type="text" name="description" required onChange={(e) => {setDescription(e.target.value)}} placeholder = { item.description }/>
 
                 <h4>Update Category:</h4>
-                <input type="text" name="category" required onChange={(e) => {setCategory(e.target.value)}} placeholder="Enter new category"/>
+                <input type="text" name="category" required onChange={(e) => {setCategory(e.target.value)}} placeholder = { item.category }/>
 
                 <h4>Update Picture:</h4>
-                <input type="text" name="Picture" required onChange={(e) => {setPictureURL(e.target.value)}} placeholder="Enter new picture"/>
+                <input type="text" name="Picture" required onChange={(e) => {setPictureURL(e.target.value)}} placeholder = { item.image }/>
 
 
                 <br></br>

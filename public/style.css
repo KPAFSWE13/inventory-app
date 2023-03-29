@@ -7,7 +7,8 @@ h1 {
   text-align: center;
   left: 75%;
   width: 100%;
-  padding: 25px;
+  padding: 19px;
+  
   background-color: #10444c;
   color: #fff;
 }
@@ -22,6 +23,8 @@ h1 #g {
 h2{
   text-align: center;
   padding-top: 5px;
+  
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 table {
@@ -49,17 +52,48 @@ table {
   background-color: green;
   color: #fff;
 }
+#price-table2 {
+  width: 5%;
+  text-align: end;
+  
+  color: #fff;
+}
+
+.removeItem {
+  width: 5%;
+}
+
+#deletebtnRow {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  width:fit-content;
+  font-size: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
 
 tr:nth-child(even) {
   background-color: #cacaca;
 }
-
+.logInStuff {
+  text-align: center;
+  padding: 10%;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
 form{
   text-align: center;
   padding: 10%;
   border: 1px solid;
   padding: 10px;
   box-shadow: 5px 10px #888888;
+  
 }
 
 #formID, input[type=text] {
@@ -108,19 +142,33 @@ form{
   text-align: left;
   padding: 2px;
 }
+#DaviesIMG {
+  
+  background-color: #10444c;
+}
 
 #imageViewer {
   width: 20rem;
-  height: 20rem;
+  height: auto;
   border-radius: 5%;
+  
   border: 1px solid;
   padding: 10px;
   box-shadow: 5px 10px #888888;
 }
 
+#imageViewer2{
+  text-align: end;
+  width: 7rem;
+  height: auto;
+  border-radius: 5%;
+  border: 1px solid;
+ 
+}
+
 #zoom {
   width: 20rem;
-  height: 20rem;
+  height: auto;
   overflow: hidden;
   margin: 0 auto;
 }
@@ -140,13 +188,27 @@ form{
 #reactBtn{
   background-color: #4CAF50; /* Green */
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   justify-content: center;
   font-size: 16px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+#reactBtnPay{
+  background-color: #cdd1cc; /* Green */
+  border: none;
+  color: rgb(69, 121, 54);
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  justify-content: center;
+  font-size: 35px;
   margin: 10px;
   border-radius: 5px;
 }
@@ -164,6 +226,19 @@ form{
   border-radius: 5px;
 }
 
+#delete-item-btn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
 #reactBtnF {
   background-color: #10444c;
   border: none;
@@ -176,10 +251,10 @@ form{
   margin: 10px;
   border-radius: 5px;
 }
+
 #btnSort {
   text-align:center;
 }
-
 
 #btnSort div {
   display: inline-block;
@@ -202,6 +277,7 @@ form{
   position: fixed;
   height: 100%;
   overflow: auto;
+  border-width: 4px;
 }
 
 /* Sidebar links */
@@ -209,30 +285,21 @@ form{
   display: block;
   color: #fff;
   background-color: #184c5c;
-  padding: 16px;
+  padding: 14px;
   text-decoration: none;
   border-style: solid;
+  border-width: 2px;
 }
 
 .sidebar h2 {
   color: #fff;
   background-color: #10444c;
   border-style: solid;
-  
-  padding: 13px;
+  border-width: 2px;
+  padding: 10px;
+  padding-bottom: 20px;
 }
-.sidebar h3 {
-  color: #10444c;
-  background-color: #d88181;
-  border-style: solid;
-  text-align: center;
-}
-.sidebar h4 {
-  color: #10444c;
-  background-color: #d88181;
-  border-style: solid;
-  text-align: center;
-}
+
 
 /* Active/current link */
 .sidebar a.active {
@@ -255,6 +322,15 @@ div.content {
   
 }
 
+div.content3 {
+  
+  height: 1000px;
+  padding-left: 30%;
+  padding-right: 30%;
+  margin-top: 10%;
+  
+}
+
 div.content2 {
   margin-left: 200px;
 }
@@ -264,6 +340,77 @@ div.content2 {
   padding: 1%;
 }
 
+/* Modal */
+
+#delete-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 30%;
+  top: 40%;
+  width: 50%;
+  height: 25%;
+  overflow: auto;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid #000
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-confirm {
+	color: #636363;
+}
+
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+}
+
+.modal-confirm .modal-header {
+	border-bottom: none;
+	position: relative;
+}
+
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+
+.modal-confirm .modal-body {
+	color: #999;
+}
+
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+
+.modal-confirm .modal-footer a {
+	color: #999;
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
   .sidebar {

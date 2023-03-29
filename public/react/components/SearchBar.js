@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export const SearchBar = ({items, itemHandler}) => {
+export const SearchBar = ({items, itemHandler, itemHandlerSearch}) => {
     // const [searchInput, setSearchInput] = useState('');
     // console.log(items);
     // const arrItems = items;
@@ -29,11 +29,11 @@ export const SearchBar = ({items, itemHandler}) => {
             
             <br></br>
             <div class="content">
-            <h2>Enter the title you're looking for...</h2>
+            <h2>Enter the item you're looking for...</h2>
             <br></br>
             <br></br>
             <br></br>
-            <input placeholder="Enter search title..." onChange={event => setQuery(event.target.value)} id="searchBar" />
+            <input placeholder="Enter search title..." onChange={event => setQuery(event.target.value)} id="searchBar" autocomplete="off"/>
             <br></br>
             <br></br>
             {items.filter(item => {
@@ -44,7 +44,7 @@ export const SearchBar = ({items, itemHandler}) => {
                 }
             }).map((item, idx) => {
                 return (
-                    <div className="box" key={idx} onClick={() => itemHandler(idx)}>
+                    <div className="box" key={idx} onClick={() => itemHandlerSearch(item.title)}>
                         
                             <h4>{item.title}</h4>
                             <p>Price: £{item.price}</p>
